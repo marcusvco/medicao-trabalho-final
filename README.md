@@ -56,3 +56,86 @@ Ambiente acadêmico (PUC), trabalho final individual com foco em aplicações Fr
 - Hipóteses: melhor LCP e INP reduzem rejeição e aumentam conversão; menor CLS melhora satisfação e conclusão de tarefas.
 - Modelagem: análise estatística (correlação, regressão logística/linear) e/ou experimentos A/B para estimar efeito causal, controlando variáveis de confusão (dispositivo, rede, página, origem, horário).
 - Práticas de medição: coleta de campo (RUM) complementada por laboratório (Lighthouse) para diagnóstico de causas e priorização.
+
+## 3. Objetivos e questões (Goal / Question / Metric)
+
+### 3.1 Objetivo geral (Goal template)
+Analisar os indicadores Core Web Vitals (LCP, INP, CLS) com o propósito de avaliar seu efeito na taxa de rejeição e na conversão, do ponto de vista de produto e engenharia, no contexto de aplicações Front-End representativas da iniciativa acadêmica (PUC), usando coleta de campo (RUM) e dados analíticos (GA4/CrUX).
+
+### 3.2 Objetivos específicos
+- O1: Medir e caracterizar a distribuição de LCP, INP e CLS por página, dispositivo e rede.
+- O2: Quantificar a relação entre níveis de CWV e taxa de rejeição/conversão.
+- O3: Identificar páginas, segmentos e causas prováveis que mais contribuem para piora de CWV.
+- O4: Priorizar recomendações de otimização com potencial de impacto em negócio.
+
+### 3.3 Questões de pesquisa / de negócio
+- Q1: Como se distribuem LCP, INP e CLS por página/dispositivo/rede?
+- Q2: Qual a variação de rejeição e conversão por categoria de CWV (Good/Needs improvement/Poor)?
+- Q3: Qual o efeito estimado de melhorar LCP/INP/CLS em rejeição e conversão?
+- Q4: Quais causas/recursos mais correlacionam com CWV ruim e qual a prioridade de correção?
+
+### 3.4 Métricas associadas (GQM)
+- Métricas principais: LCP (ms) — maior elemento renderizado; INP (ms) — latência de interação; CLS (adimensional) — instabilidade visual; fontes: `web-vitals`, GA4, CrUX.
+- Métricas de negócio: Taxa de rejeição (%) e Taxa de conversão (%); fonte: GA4.
+- Métricas de suporte/diagnóstico: TTFB (ms), peso total de JS/CSS (KB), número de requisições; fonte: Lighthouse/PageSpeed.
+- Mapeamento:
+  - Q1 → LCP/INP/CLS por página/dispositivo/rede.
+  - Q2 → Rejeição/Conversão por bucket de CWV (Good/NI/Poor).
+  - Q3 → Variação de Rejeição/Conversão vs. melhoria simulada/observada de LCP/INP/CLS (modelos de regressão/A-B).
+  - Q4 → Diagnósticos Lighthouse (peso, bloqueios, imagens), correlação com CWV e ranking de ações.
+
+## 4. Escopo e contexto do experimento
+
+### 4.1 Escopo funcional / de processo (incluído e excluído)
+- Incluído: páginas landing, listagem, detalhe e fluxo de conversão (cadastro/checkout); instrumentação de Front-End; análise GA4/CrUX; auditoria Lighthouse.
+- Excluído: alterações de backend, pricing, campanhas de marketing, app móvel nativo, SEO técnico fora do necessário para CWV.
+
+### 4.2 Contexto do estudo (tipo de organização, projeto, experiência)
+Estudo acadêmico (PUC), projeto de baixa criticidade, conduzido por um pesquisador, com tráfego de teste/produção controlada. Participantes indiretos via tráfego real; experiência prévia em Front-End e métricas web.
+
+### 4.3 Premissas
+- GA4 e/ou CrUX configurados e acessíveis; permissão de coleta (consent) adequada.
+- Ambiente estável o suficiente para medições comparáveis no período selecionado.
+- Volume mínimo de sessões para análises segmentadas simples.
+
+### 4.4 Restrições
+- Tempo limitado e orçamento nulo/baixo; dependência de ferramentas gratuitas.
+- Acesso controlado a ambientes e dados; políticas de privacidade e compliance.
+- Amostragem e limites de coleta do GA4/CrUX.
+
+### 4.5 Limitações previstas
+- Validez externa limitada: contexto específico e amostra possivelmente pequena.
+- Confundidores: sazonalidade, origem de tráfego, mudanças paralelas no produto.
+- Dificuldade de isolar causalidade sem A/B amplo.
+
+## 5. Stakeholders e impacto esperado
+
+### 5.1 Stakeholders principais
+- Desenvolvimento Front-End, QA, Produto, Gestão/Coordenação acadêmica, Usuários/participantes.
+
+### 5.2 Interesses e expectativas dos stakeholders
+- Dev Front-End: evidências acionáveis de gargalos e priorização de melhorias.
+- QA: critérios objetivos de aceitação relacionados a CWV.
+- Produto: impacto esperado em conversão e engajamento; priorização de roadmap.
+- Gestão: viabilidade, custo/benefício e riscos.
+
+### 5.3 Impactos potenciais no processo / produto
+- Pequena sobrecarga de instrumentação; possíveis ajustes de prioridades e prazos.
+- Mudanças de performance podem afetar experiência durante testes; comunicação necessária.
+
+## 6. Riscos de alto nível, premissas e critérios de sucesso
+
+### 6.1 Riscos de alto nível (negócio, técnicos, etc.)
+- Baixo volume de dados; indisponibilidade de acessos; instabilidade de ambiente.
+- Instrumentação incorreta; sampling/sessões insuficientes no GA4; viés de medição.
+- Mudanças paralelas no produto mascarando efeitos.
+
+### 6.2 Critérios de sucesso globais (go / no-go)
+- Coleta válida por período mínimo (ex.: ≥ 2 semanas) com amostra suficiente.
+- Estimativa do efeito de CWV em rejeição/conversão com significância prática/estatística.
+- Lista priorizada de ações de otimização alinhada a impacto e esforço.
+
+### 6.3 Critérios de parada antecipada (pré-execução)
+- Falta de acesso a dados/ambiente; reprovação de privacidade/ética.
+- Instabilidade severa do sistema; volume de tráfego insuficiente.
+- Mudança de escopo que inviabilize comparabilidade das medições.
