@@ -84,6 +84,40 @@ Analisar os indicadores Core Web Vitals (LCP, INP, CLS) com o propósito de aval
   - Q3 → Variação de Rejeição/Conversão vs. melhoria simulada/observada de LCP/INP/CLS (modelos de regressão/A-B).
   - Q4 → Diagnósticos Lighthouse (peso, bloqueios, imagens), correlação com CWV e ranking de ações.
 
+### 3.5 Tabela GQM
+
+| Objetivo | Pergunta | Métricas |
+|---|---|---|
+| O1: Medir distribuição de CWV | Q1.1: Qual é a distribuição de LCP por página/dispositivo/rede? | LCP (ms); FCP (ms) |
+| O1: Medir distribuição de CWV | Q1.2: Qual é a distribuição de INP por tipo de interação e dispositivo? | INP (ms); TBT (ms) |
+| O1: Medir distribuição de CWV | Q1.3: Qual é a distribuição de CLS por página e eventos visuais? | CLS; Speed Index (ms) |
+| O2: Relacionar CWV com rejeição/conversão | Q2.1: Como a taxa de rejeição varia por bucket de LCP (bom/NI/ruim)? | Taxa de rejeição (%); LCP (ms) |
+| O2: Relacionar CWV com rejeição/conversão | Q2.2: Como a taxa de conversão varia por bucket de INP? | Taxa de conversão (%); INP (ms) |
+| O2: Relacionar CWV com rejeição/conversão | Q2.3: Qual o efeito de CLS na taxa de conversão em páginas de checkout? | Taxa de conversão (%); CLS |
+| O3: Identificar páginas/segmentos/causas | Q3.1: Quais páginas concentram maior LCP P75? | LCP (ms); TTFB (ms) |
+| O3: Identificar páginas/segmentos/causas | Q3.2: Quais recursos (JS/CSS/imagens) estão mais correlacionados com INP/TBT altos? | JS bytes (KB); CSS bytes (KB); TBT (ms) |
+| O3: Identificar páginas/segmentos/causas | Q3.3: Qual o impacto do número de requisições sobre LCP? | Número de requisições (contagem); LCP (ms) |
+| O4: Priorizar recomendações de otimização | Q4.1: Quais ações (preload, lazy, compressão) reduzem LCP estimado? | LCP (ms); FCP (ms) |
+| O4: Priorizar recomendações de otimização | Q4.2: Quais ações reduzem INP/TBT em interações críticas? | INP (ms); TBT (ms) |
+| O4: Priorizar recomendações de otimização | Q4.3: Quais ações reduzem CLS em componentes instáveis? | CLS; Speed Index (ms) |
+
+### 3.6 Tabela de métricas
+
+| Métrica | Descrição | Unidade |
+|---|---|---|
+| LCP | Tempo até o maior elemento visível ser renderizado | ms |
+| INP | Latência agregada de interação (responsividade real) | ms |
+| CLS | Instabilidade visual acumulada | adimensional |
+| FCP | Tempo até o primeiro conteúdo ser exibido | ms |
+| TBT | Tempo total bloqueado por tarefas longas | ms |
+| Speed Index | Rapidez percebida de aparecimento do conteúdo | ms |
+| TTFB | Tempo até o primeiro byte da resposta | ms |
+| JS bytes | Tamanho total dos arquivos JavaScript carregados | KB |
+| CSS bytes | Tamanho total dos arquivos CSS carregados | KB |
+| Número de requisições | Quantidade de requisições da página | contagem |
+| Taxa de rejeição | Percentual de sessões com apenas uma visualização | % |
+| Taxa de conversão | Percentual de sessões que concluíram a meta definida | % |
+
 ## 4. Escopo e contexto do experimento
 
 ### 4.1 Escopo funcional / de processo (incluído e excluído)
