@@ -60,21 +60,25 @@ Ambiente acadêmico (PUC), trabalho final individual com foco em aplicações Fr
 ## 3. Objetivos e questões (Goal / Question / Metric)
 
 ### 3.1 Objetivo geral (Goal template)
+
 Analisar os indicadores Core Web Vitals (LCP, INP, CLS) com o propósito de avaliar seu efeito na taxa de rejeição e na conversão, do ponto de vista de produto e engenharia, no contexto de aplicações Front-End representativas da iniciativa acadêmica (PUC), usando coleta de campo (RUM) e dados analíticos (GA4/CrUX).
 
 ### 3.2 Objetivos específicos
+
 - O1: Medir e caracterizar a distribuição de LCP, INP e CLS por página, dispositivo e rede.
 - O2: Quantificar a relação entre níveis de CWV e taxa de rejeição/conversão.
 - O3: Identificar páginas, segmentos e causas prováveis que mais contribuem para piora de CWV.
 - O4: Priorizar recomendações de otimização com potencial de impacto em negócio.
 
 ### 3.3 Questões de pesquisa / de negócio
+
 - Q1: Como se distribuem LCP, INP e CLS por página/dispositivo/rede?
 - Q2: Qual a variação de rejeição e conversão por categoria de CWV (Good/Needs improvement/Poor)?
 - Q3: Qual o efeito estimado de melhorar LCP/INP/CLS em rejeição e conversão?
 - Q4: Quais causas/recursos mais correlacionam com CWV ruim e qual a prioridade de correção?
 
 ### 3.4 Métricas associadas (GQM)
+
 - Métricas principais: LCP (ms) — maior elemento renderizado; INP (ms) — latência de interação; CLS (adimensional) — instabilidade visual; fontes: `web-vitals`, GA4, CrUX.
 - Métricas de negócio: Taxa de rejeição (%) e Taxa de conversão (%); fonte: GA4.
 - Métricas de suporte/diagnóstico: TTFB (ms), peso total de JS/CSS (KB), número de requisições; fonte: Lighthouse/PageSpeed.
@@ -86,58 +90,63 @@ Analisar os indicadores Core Web Vitals (LCP, INP, CLS) com o propósito de aval
 
 ### 3.5 Tabela GQM
 
-| Objetivo | Pergunta | Métricas |
-|---|---|---|
-| O1: Medir distribuição de CWV | Q1.1: Qual é a distribuição de LCP por página/dispositivo/rede? | LCP (ms); FCP (ms) |
-| O1: Medir distribuição de CWV | Q1.2: Qual é a distribuição de INP por tipo de interação e dispositivo? | INP (ms); TBT (ms) |
-| O1: Medir distribuição de CWV | Q1.3: Qual é a distribuição de CLS por página e eventos visuais? | CLS; Speed Index (ms) |
-| O2: Relacionar CWV com rejeição/conversão | Q2.1: Como a taxa de rejeição varia por bucket de LCP (bom/NI/ruim)? | Taxa de rejeição (%); LCP (ms) |
-| O2: Relacionar CWV com rejeição/conversão | Q2.2: Como a taxa de conversão varia por bucket de INP? | Taxa de conversão (%); INP (ms) |
-| O2: Relacionar CWV com rejeição/conversão | Q2.3: Qual o efeito de CLS na taxa de conversão em páginas de checkout? | Taxa de conversão (%); CLS |
-| O3: Identificar páginas/segmentos/causas | Q3.1: Quais páginas concentram maior LCP P75? | LCP (ms); TTFB (ms) |
-| O3: Identificar páginas/segmentos/causas | Q3.2: Quais recursos (JS/CSS/imagens) estão mais correlacionados com INP/TBT altos? | JS bytes (KB); CSS bytes (KB); TBT (ms) |
-| O3: Identificar páginas/segmentos/causas | Q3.3: Qual o impacto do número de requisições sobre LCP? | Número de requisições (contagem); LCP (ms) |
-| O4: Priorizar recomendações de otimização | Q4.1: Quais ações (preload, lazy, compressão) reduzem LCP estimado? | LCP (ms); FCP (ms) |
-| O4: Priorizar recomendações de otimização | Q4.2: Quais ações reduzem INP/TBT em interações críticas? | INP (ms); TBT (ms) |
-| O4: Priorizar recomendações de otimização | Q4.3: Quais ações reduzem CLS em componentes instáveis? | CLS; Speed Index (ms) |
+| Objetivo                                  | Pergunta                                                                            | Métricas                                   |
+| ----------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------ |
+| O1: Medir distribuição de CWV             | Q1.1: Qual é a distribuição de LCP por página/dispositivo/rede?                     | LCP (ms); FCP (ms)                         |
+| O1: Medir distribuição de CWV             | Q1.2: Qual é a distribuição de INP por tipo de interação e dispositivo?             | INP (ms); TBT (ms)                         |
+| O1: Medir distribuição de CWV             | Q1.3: Qual é a distribuição de CLS por página e eventos visuais?                    | CLS; Speed Index (ms)                      |
+| O2: Relacionar CWV com rejeição/conversão | Q2.1: Como a taxa de rejeição varia por bucket de LCP (bom/NI/ruim)?                | Taxa de rejeição (%); LCP (ms)             |
+| O2: Relacionar CWV com rejeição/conversão | Q2.2: Como a taxa de conversão varia por bucket de INP?                             | Taxa de conversão (%); INP (ms)            |
+| O2: Relacionar CWV com rejeição/conversão | Q2.3: Qual o efeito de CLS na taxa de conversão em páginas de checkout?             | Taxa de conversão (%); CLS                 |
+| O3: Identificar páginas/segmentos/causas  | Q3.1: Quais páginas concentram maior LCP P75?                                       | LCP (ms); TTFB (ms)                        |
+| O3: Identificar páginas/segmentos/causas  | Q3.2: Quais recursos (JS/CSS/imagens) estão mais correlacionados com INP/TBT altos? | JS bytes (KB); CSS bytes (KB); TBT (ms)    |
+| O3: Identificar páginas/segmentos/causas  | Q3.3: Qual o impacto do número de requisições sobre LCP?                            | Número de requisições (contagem); LCP (ms) |
+| O4: Priorizar recomendações de otimização | Q4.1: Quais ações (preload, lazy, compressão) reduzem LCP estimado?                 | LCP (ms); FCP (ms)                         |
+| O4: Priorizar recomendações de otimização | Q4.2: Quais ações reduzem INP/TBT em interações críticas?                           | INP (ms); TBT (ms)                         |
+| O4: Priorizar recomendações de otimização | Q4.3: Quais ações reduzem CLS em componentes instáveis?                             | CLS; Speed Index (ms)                      |
 
 ### 3.6 Tabela de métricas
 
-| Métrica | Descrição | Unidade |
-|---|---|---|
-| LCP | Tempo até o maior elemento visível ser renderizado | ms |
-| INP | Latência agregada de interação (responsividade real) | ms |
-| CLS | Instabilidade visual acumulada | adimensional |
-| FCP | Tempo até o primeiro conteúdo ser exibido | ms |
-| TBT | Tempo total bloqueado por tarefas longas | ms |
-| Speed Index | Rapidez percebida de aparecimento do conteúdo | ms |
-| TTFB | Tempo até o primeiro byte da resposta | ms |
-| JS bytes | Tamanho total dos arquivos JavaScript carregados | KB |
-| CSS bytes | Tamanho total dos arquivos CSS carregados | KB |
-| Número de requisições | Quantidade de requisições da página | contagem |
-| Taxa de rejeição | Percentual de sessões com apenas uma visualização | % |
-| Taxa de conversão | Percentual de sessões que concluíram a meta definida | % |
+| Métrica               | Descrição                                            | Unidade      |
+| --------------------- | ---------------------------------------------------- | ------------ |
+| LCP                   | Tempo até o maior elemento visível ser renderizado   | ms           |
+| INP                   | Latência agregada de interação (responsividade real) | ms           |
+| CLS                   | Instabilidade visual acumulada                       | adimensional |
+| FCP                   | Tempo até o primeiro conteúdo ser exibido            | ms           |
+| TBT                   | Tempo total bloqueado por tarefas longas             | ms           |
+| Speed Index           | Rapidez percebida de aparecimento do conteúdo        | ms           |
+| TTFB                  | Tempo até o primeiro byte da resposta                | ms           |
+| JS bytes              | Tamanho total dos arquivos JavaScript carregados     | KB           |
+| CSS bytes             | Tamanho total dos arquivos CSS carregados            | KB           |
+| Número de requisições | Quantidade de requisições da página                  | contagem     |
+| Taxa de rejeição      | Percentual de sessões com apenas uma visualização    | %            |
+| Taxa de conversão     | Percentual de sessões que concluíram a meta definida | %            |
 
 ## 4. Escopo e contexto do experimento
 
 ### 4.1 Escopo funcional / de processo (incluído e excluído)
+
 - Incluído: páginas landing, listagem, detalhe e fluxo de conversão (cadastro/checkout); instrumentação de Front-End; análise GA4/CrUX; auditoria Lighthouse.
 - Excluído: alterações de backend, pricing, campanhas de marketing, app móvel nativo, SEO técnico fora do necessário para CWV.
 
 ### 4.2 Contexto do estudo (tipo de organização, projeto, experiência)
+
 Estudo acadêmico (PUC), projeto de baixa criticidade, conduzido por um pesquisador, com tráfego de teste/produção controlada. Participantes indiretos via tráfego real; experiência prévia em Front-End e métricas web.
 
 ### 4.3 Premissas
+
 - GA4 e/ou CrUX configurados e acessíveis; permissão de coleta (consent) adequada.
 - Ambiente estável o suficiente para medições comparáveis no período selecionado.
 - Volume mínimo de sessões para análises segmentadas simples.
 
 ### 4.4 Restrições
+
 - Tempo limitado e orçamento nulo/baixo; dependência de ferramentas gratuitas.
 - Acesso controlado a ambientes e dados; políticas de privacidade e compliance.
 - Amostragem e limites de coleta do GA4/CrUX.
 
 ### 4.5 Limitações previstas
+
 - Validez externa limitada: contexto específico e amostra possivelmente pequena.
 - Confundidores: sazonalidade, origem de tráfego, mudanças paralelas no produto.
 - Dificuldade de isolar causalidade sem A/B amplo.
@@ -145,31 +154,113 @@ Estudo acadêmico (PUC), projeto de baixa criticidade, conduzido por um pesquisa
 ## 5. Stakeholders e impacto esperado
 
 ### 5.1 Stakeholders principais
+
 - Desenvolvimento Front-End, QA, Produto, Gestão/Coordenação acadêmica, Usuários/participantes.
 
 ### 5.2 Interesses e expectativas dos stakeholders
+
 - Dev Front-End: evidências acionáveis de gargalos e priorização de melhorias.
 - QA: critérios objetivos de aceitação relacionados a CWV.
 - Produto: impacto esperado em conversão e engajamento; priorização de roadmap.
 - Gestão: viabilidade, custo/benefício e riscos.
 
 ### 5.3 Impactos potenciais no processo / produto
+
 - Pequena sobrecarga de instrumentação; possíveis ajustes de prioridades e prazos.
 - Mudanças de performance podem afetar experiência durante testes; comunicação necessária.
 
 ## 6. Riscos de alto nível, premissas e critérios de sucesso
 
 ### 6.1 Riscos de alto nível (negócio, técnicos, etc.)
+
 - Baixo volume de dados; indisponibilidade de acessos; instabilidade de ambiente.
 - Instrumentação incorreta; sampling/sessões insuficientes no GA4; viés de medição.
 - Mudanças paralelas no produto mascarando efeitos.
 
 ### 6.2 Critérios de sucesso globais (go / no-go)
+
 - Coleta válida por período mínimo (ex.: ≥ 2 semanas) com amostra suficiente.
 - Estimativa do efeito de CWV em rejeição/conversão com significância prática/estatística.
 - Lista priorizada de ações de otimização alinhada a impacto e esforço.
 
 ### 6.3 Critérios de parada antecipada (pré-execução)
+
 - Falta de acesso a dados/ambiente; reprovação de privacidade/ética.
 - Instabilidade severa do sistema; volume de tráfego insuficiente.
 - Mudança de escopo que inviabilize comparabilidade das medições.
+
+## 7. Modelo conceitual e hipóteses
+
+### 7.1 Modelo conceitual do experimento
+
+Qualidade de desempenho medida por Core Web Vitals (LCP, INP, CLS) influencia diretamente a experiência do usuário (fluidez, estabilidade e responsividade). Melhorias aplicadas em otimização (ex.: pré-carregamento de recursos críticos, lazy loading de imagens/componentes, redução de JS bloqueante, compressão e cache) tendem a melhorar os CWV, o que reduz atrito em páginas de entrada e fluxos críticos (cadastro/checkout), diminuindo a taxa de rejeição e aumentando a taxa de conversão.
+
+### 7.2 Hipóteses formais (H0, H1)
+
+- H0_Q2-LCP: A taxa de rejeição não difere entre buckets de LCP (bom/NI/ruim).
+- H1_Q2-LCP: Buckets com LCP pior apresentam maior taxa de rejeição.
+- H0_Q2-INP: A taxa de conversão não difere entre buckets de INP.
+- H1_Q2-INP: Buckets com INP pior apresentam menor taxa de conversão.
+- H0_Q2-CLS: A taxa de conversão é independente do nível de CLS.
+- H1_Q2-CLS: Maior CLS está associado a menor taxa de conversão em páginas de checkout.
+- H0_Q3-Efeito: Melhorias em LCP/INP/CLS não alteram rejeição/conversão.
+- H1_Q3-Efeito: Melhorias em LCP/INP/CLS reduzem rejeição e aumentam conversão.
+
+### 7.3 Nível de significância e considerações de poder
+
+Nível de significância α = 0,05. Espera-se poder estatístico moderado a alto com janela de observação de 2–4 semanas, dependendo do volume de sessões por segmento (página/dispositivo/rede/origem). Para efeitos práticos (ex.: redução absoluta de 2–5 p.p. em rejeição ou aumento de 1–3 p.p. em conversão), serão priorizadas análises com estratificação e modelos que incorporem covariáveis, mitigando perda de poder por heterogeneidade.
+
+## 8. Variáveis, fatores, tratamentos e objetos de estudo
+
+### 8.1 Objetos de estudo
+
+Páginas landing, listagem, detalhe e fluxo de conversão (cadastro/checkout); componentes críticos (hero, formulário, carrinho); recursos estáticos (imagens, CSS, JS) e sua configuração (hints, cache, compressão).
+
+### 8.2 Sujeitos / participantes (visão geral)
+
+Usuários reais (tráfego de produção controlada/teste), agregados por sessão; quando aplicável, estudantes/testadores para validações pontuais de laboratório.
+
+### 8.3 Variáveis independentes (fatores) e seus níveis
+
+- Bucket de LCP: bom / precisa melhorar / ruim.
+- Bucket de INP: bom / precisa melhorar / ruim.
+- Bucket de CLS: bom / precisa melhorar / ruim.
+- Tipo de otimização aplicada: nenhuma (controle) / preload/preconnect / lazy loading / otimização de JS (code split, defer) / compressão/cache de ativos.
+
+### 8.4 Tratamentos (condições experimentais)
+
+- Controle: estado atual sem intervenções de performance relevantes.
+- Tratamento 1: preload/preconnect de recursos críticos (ex.: fonte, CSS crítico).
+- Tratamento 2: lazy loading de imagens/componentes não críticos.
+- Tratamento 3: otimização de JS (divisão de código, defer/async), compressão e cache.
+  Condições distinguem-se pela combinação de técnicas e pela página/fluxo alvo.
+
+### 8.5 Variáveis dependentes (respostas)
+
+Taxa de rejeição (%), Taxa de conversão (%), Engajamento (tempo médio na página, páginas por sessão), taxa de erro de interação (quando disponível).
+
+### 8.6 Variáveis de controle / bloqueio
+
+Tipo de dispositivo (mobile/desktop), classe de rede (3G/4G/Wi-Fi), tipo de página, origem de tráfego, horário/dia, presença de cache, versão de conteúdo.
+
+### 8.7 Possíveis variáveis de confusão conhecidas
+
+Sazonalidade, campanhas de marketing, mudanças paralelas de UI/funcionalidades, mix de usuários, consentimento/privacidade, uso de ad-blockers.
+
+## 9. Desenho experimental
+
+### 9.1 Tipo de desenho (completamente randomizado, blocos, fatorial, etc.)
+
+Desenho observacional correlacional com blocos por página/dispositivo/rede e, quando viável, desenho quasi-experimental A/B. Para múltiplas técnicas aplicadas em conjunto, considera-se abordagem fatorial limitada em páginas-alvo.
+
+### 9.2 Randomização e alocação
+
+Em A/B, alocação aleatória por sessão (ex.: 50/50) usando mecanismo de experimento do cliente/analytics; preservação de coortes durante a janela de medição. Em observacional, não há randomização, apenas estratificação e ajuste por covariáveis.
+
+### 9.3 Balanceamento e contrabalanço
+
+Garantia de comparabilidade por segmento (página/dispositivo/rede/origem) via quotas ou ponderação; monitoramento de tamanhos de amostra e taxas. Em fluxos com etapas sequenciais, contrabalanço por ordem quando aplicável em testes de laboratório.
+
+### 9.4 Número de grupos e sessões
+
+Dois grupos principais (controle e tratamento) e até três braços de tratamento conforme 8.4. Janela de coleta de 2–4 semanas por grupo, buscando amostra suficiente para estimar efeitos com α = 0,05.
