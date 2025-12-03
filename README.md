@@ -264,3 +264,86 @@ Garantia de comparabilidade por segmento (página/dispositivo/rede/origem) via q
 ### 9.4 Número de grupos e sessões
 
 Dois grupos principais (controle e tratamento) e até três braços de tratamento conforme 8.4. Janela de coleta de 2–4 semanas por grupo, buscando amostra suficiente para estimar efeitos com α = 0,05.
+
+## 10. População, sujeitos e amostragem
+
+### 10.1 População-alvo
+
+Usuários de aplicações web Front-End (desktop e mobile) acessando páginas de landing, listagem, detalhe e conversão em ambiente acadêmico (PUC), além de estudantes/testadores envolvidos em validações de laboratório.
+
+### 10.2 Critérios de inclusão de sujeitos
+
+- Sessões com consentimento válido para coleta.
+- Navegadores suportados (Chrome/Edge/Firefox recentes) com execução de `web-vitals` e GA4.
+- Dispositivos mobile e desktop com rede estável suficiente para interação.
+
+### 10.3 Critérios de exclusão de sujeitos
+
+- Bots/crawlers, tráfego administrativo/interno e sessões sem consentimento.
+- Navegadores ou configurações que bloqueiam scripts essenciais (ad-blockers agressivos, no-script), quando inviabilizam medição.
+- Conexões extremamente instáveis ou erros que impedem carregar/instrumentar a página.
+
+### 10.4 Tamanho da amostra planejado (por grupo)
+
+Planejado: ≥ 300 sessões por grupo (controle/tratamento) no período de 2–4 semanas, com meta de ≥ 100 sessões por segmento principal (página/dispositivo). Ajustes conforme tráfego real e poder necessário para detectar efeitos práticos.
+
+### 10.5 Método de seleção / recrutamento
+
+Tráfego natural (amostra de conveniência) com alocação aleatória por sessão em A/B quando aplicável. Para laboratório, convite aberto à turma/disciplina com slots definidos.
+
+### 10.6 Treinamento e preparação dos sujeitos
+
+Materiais curtos com objetivos do estudo, consentimento, política de privacidade, instruções de uso das páginas de teste e nota sobre comportamento esperado; em laboratório, roteiro de tarefas e guia rápido.
+
+## 11. Instrumentação e protocolo operacional
+
+### 11.1 Instrumentos de coleta (questionários, logs, planilhas, etc.)
+
+- `web-vitals`: coleta de LCP/INP/CLS em campo (RUM).
+- GA4: rejeição, conversão, eventos de interação e segmentos.
+- CrUX: distribuição populacional externa de CWV.
+- Lighthouse/PageSpeed: auditorias e diagnósticos (TTFB, peso, bloqueios, imagens).
+- Planilhas/BigQuery: agregação, limpeza e análise.
+- Scripts ETL: export/import e transformação de dados para tabelas de análise.
+
+### 11.2 Materiais de suporte (instruções, guias)
+
+Guia de operação, checklist de instrumentação, instruções de consentimento, roteiro de tarefas (lab), templates de coleta e planilhas com dicionário de métricas.
+
+### 11.3 Procedimento experimental (protocolo – visão passo a passo)
+
+1. Preparar páginas-alvo e instrumentação (`web-vitals`, GA4).
+2. Validar coleta em ambiente de teste; publicar em produção controlada.
+3. Definir janelas e segmentos (página/dispositivo/rede/origem).
+4. Executar coleta contínua por 2–4 semanas; monitorar integridade.
+5. Rodar auditorias Lighthouse; registrar diagnósticos.
+6. Exportar dados para planilhas/BigQuery; aplicar ETL padronizado.
+7. Analisar conforme GQM (Q1–Q4); gerar visualizações e tabelas.
+8. Consolidar resultados e recomendações; revisar com stakeholders.
+9. Encerrar coleta; arquivar dados e documentação.
+
+### 11.4 Plano de piloto (se haverá piloto, escopo e critérios de ajuste)
+
+Piloto de 3–5 dias em 1–2 páginas (landing e checkout) com amostra reduzida. Critérios: integridade da coleta, estabilidade de métricas, ausência de regressões visíveis. Ajustes: correção de instrumentação, segmentação, thresholds e protocolo.
+
+## 12. Plano de análise de dados (pré-execução)
+
+### 12.1 Estratégia geral de análise (como responderá às questões)
+
+Aplicar o mapeamento GQM: Q1 (distribuições por segmento); Q2 (comparações de rejeição/conversão por buckets de CWV); Q3 (modelagem de efeito de melhorias em CWV sobre rejeição/conversão); Q4 (diagnóstico de causas e ranking de ações via auditorias e correlações).
+
+### 12.2 Métodos estatísticos planejados
+
+- Comparações entre grupos/buckets: ANOVA/Kruskal-Wallis para métricas contínuas; testes de proporção/qui-quadrado para rejeição/conversão.
+- Modelagem: regressão logística (conversão), regressão linear/quantílica (LCP/INP/CLS), modelos com covariáveis (página, dispositivo, rede, origem).
+- A/B: teste de diferença de proporções e intervalos de confiança; quando suposições não atendidas, testes não paramétricos e bootstrap.
+
+### 12.3 Tratamento de dados faltantes e outliers
+
+- Dados faltantes: exclusão listwise de sessões sem métricas críticas (LCP/INP/CLS) ou sem eventos necessários (conversão), com relatório de taxas de falta.
+- Outliers: regras pré-definidas (winsorização em P99, IQR×3 ou limites técnicos plausíveis) e análise de sensibilidade com e sem outliers.
+- Logs de decisões: registro das transformações para reprodutibilidade.
+
+### 12.4 Plano de análise para dados qualitativos (se houver)
+
+Coleta opcional de comentários/observações em laboratório; análise por codificação temática simples (usabilidade, performance percebida, frustração), categorização e contagem, triangulando com métricas quantitativas.
