@@ -326,6 +326,70 @@ Guia de operação, checklist de instrumentação, instruções de consentimento
 
 Piloto de 3–5 dias em 1–2 páginas (landing e checkout) com amostra reduzida. Critérios: integridade da coleta, estabilidade de métricas, ausência de regressões visíveis. Ajustes: correção de instrumentação, segmentação, thresholds e protocolo.
 
+### 11.5 Fluxograma operacional (passo a passo)
+
+```
+INÍCIO
+  |
+  v
+Planejamento e desenho (GQM, escopo, stakeholders)
+  - Stakeholders: Produto, Dev Front-End, QA, Gestão
+  - Variáveis: independentes (buckets LCP/INP/CLS), controle (dispositivo, rede, página, origem, horário)
+  - Métricas: LCP, INP, CLS, FCP, TBT, TTFB, JS bytes, CSS bytes, nº requisições, rejeição, conversão
+  |
+  v
+Instrumentação e configuração
+  - Instrumentos: web-vitals (RUM), GA4 (eventos, rejeição, conversão)
+  - Suporte: CrUX (distribuições), Lighthouse/PageSpeed (auditorias)
+  |
+  v
+Piloto (3–5 dias)
+  - Validação: integridade de coleta, estabilidade de métricas
+  - Ajustes: segmentação, thresholds, correção de instrumentação
+  |
+  v
+Coleta contínua (2–4 semanas)
+  - Dados: sessões por página/dispositivo/rede/origem
+  - Monitoramento: qualidade dos dados, erros de coleta
+  |
+  v
+Auditorias de performance
+  - Lighthouse/PageSpeed: TTFB, peso de JS/CSS, bloqueios, imagens
+  - Saídas: oportunidades e diagnósticos
+  |
+  v
+ETL e preparação de dados
+  - Ferramentas: Planilhas/BigQuery, scripts ETL
+  - Passos: limpeza, agregação, criação de tabelas por segmentos
+  |
+  v
+Análise GQM
+  - Q1: Distribuições de LCP/INP/CLS por segmentos
+  - Q2: Rejeição/Conversão por buckets de CWV
+  - Q3: Modelagem de efeito (regressão; A/B quando aplicável)
+  - Q4: Diagnóstico e ranking de ações (correlações + auditorias)
+  |
+  v
+Recomendações de otimização
+  - Ações: preload/preconnect, lazy loading, code split/defer, compressão/cache
+  - Priorização: impacto vs. esforço
+  |
+  v
+Revisão com stakeholders
+  - Produto/Dev/QA/Gestão: decisão de go/no-go
+  - Critérios: coleta válida, efeito estimado, lista priorizada
+  |
+  v
+Implementação (se aprovado) e monitoramento
+  - Execução de melhorias + coleta pós-ação
+  - Verificação de impacto em CWV e negócio
+  |
+  v
+Encerramento
+  - Arquivamento: dados, relatórios, documentação do experimento
+  - Lições aprendidas e próximos passos
+```
+
 ## 12. Plano de análise de dados (pré-execução)
 
 ### 12.1 Estratégia geral de análise (como responderá às questões)
