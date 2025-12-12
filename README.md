@@ -933,5 +933,3 @@ Coleta opcional de comentários/observações em laboratório; análise por codi
 ```
 
 ---
-
-**Fim do documento de plano experimental.**
